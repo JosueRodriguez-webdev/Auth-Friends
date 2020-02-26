@@ -3,7 +3,6 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 function Login(props) {
-  console.log(props);
   const [userInput, setUserInput] = useState({
     username: "",
     password: ""
@@ -25,11 +24,11 @@ function Login(props) {
       .post(loginURL, userInput)
       .then((res) => {
         window.localStorage.setItem("token", res.data.payload);
+        props.history.push("/profile");
       })
       .catch((err) => {
         console.log(err);
       });
-    return props.history.push("/profile");
   };
 
   return (

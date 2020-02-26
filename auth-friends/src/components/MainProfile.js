@@ -3,7 +3,7 @@ import ProfilePost from "./ProfilePost";
 import FriendsList from "./FriendsList";
 import { Redirect } from "react-router-dom";
 
-function MainProfile(props) {
+function MainProfile() {
   const token = localStorage.getItem("token");
   if (!token) {
     return <Redirect to="/" />;

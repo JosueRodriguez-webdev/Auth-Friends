@@ -1,8 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function ProfilePost() {
-  const signingOut = () => {
+  let history = useHistory();
+
+  const signingOut = (e) => {
+    e.preventDefault();
     window.localStorage.removeItem("token");
+    history.push(`/`);
   };
   return (
     <div>
