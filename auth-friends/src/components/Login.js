@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 function Login(props) {
   console.log(props);
@@ -7,7 +8,11 @@ function Login(props) {
     username: "",
     password: ""
   });
-  console.log(userInput);
+
+  const token = localStorage.getItem("token");
+  if (token) {
+    return <Redirect to="/profile" />;
+  }
 
   const handleChange = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
@@ -24,6 +29,7 @@ function Login(props) {
       .catch((err) => {
         console.log(err);
       });
+    return props.history.push("/profile");
   };
 
   return (

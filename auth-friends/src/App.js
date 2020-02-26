@@ -1,22 +1,17 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import MainProfile from "./components/MainProfile";
+import Nav from "./components/Nav";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Link to="/">Login</Link>
-      <Link to="/profile">Profile</Link>
-
-      <Route exact path="/">
-        <Login />
-      </Route>
-      <Route exact path="/profile">
-        <MainProfile />
-      </Route>
+      <Nav />
+      <Route exact path="/" component={Login} />
+      <Route exact path="/profile" component={MainProfile} />
     </div>
   );
 }
